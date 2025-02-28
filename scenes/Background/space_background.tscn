@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://6ptf6s6or8jj"]
+
+[ext_resource type="Texture2D" uid="uid://ccfe8milukxj" path="res://assets/sprites/background/Purple_Nebula_01-1024x1024.png" id="1_cf27b"]
+[ext_resource type="Texture2D" uid="uid://cl1jhmnhoyie4" path="res://assets/sprites/background/Starfield_01-1024x1024.png" id="2_x3hml"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="Nebula" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(1024, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="Nebula"]
+position = Vector2(669, 391)
+scale = Vector2(1.316, 1)
+texture = ExtResource("1_cf27b")
+
+[node name="Stars" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1024, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="Stars"]
+self_modulate = Color(1, 1, 1, 0.517647)
+position = Vector2(576, 410)
+scale = Vector2(0.998, 1)
+texture = ExtResource("2_x3hml")

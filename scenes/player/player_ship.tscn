@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0a53tcb2ordi"]
+
+[ext_resource type="Texture2D" uid="uid://dvr5lt65kbxfy" path="res://assets/sprites/star_ships/playerShip1_orange.png" id="1_d7hk6"]
+[ext_resource type="Script" path="res://scenes/player/player_ship.gd" id="1_t6xx3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g542q"]
+
+[node name="PlayerShip" type="CharacterBody2D"]
+script = ExtResource("1_t6xx3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d7hk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(5.16, 2.74155)
+shape = SubResource("CapsuleShape2D_g542q")
+one_way_collision_margin = 0.0
+
+[node name="ShieldBar" type="ProgressBar" parent="."]
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_right = 4.0
+offset_bottom = 27.0
