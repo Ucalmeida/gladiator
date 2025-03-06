@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://yon4tpqd0vxf"]
+
+[ext_resource type="Texture2D" uid="uid://b86ynhwawoj43" path="res://assets/sprites/particles/fire16.png" id="1_qwddr"]
+[ext_resource type="Texture2D" uid="uid://c5jbxvipvahkp" path="res://assets/sprites/particles/fire17.png" id="2_6wvha"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xy4l4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qwddr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6wvha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_qwddr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 21.0
+}]
+
+[node name="propulsor" type="AnimatedSprite2D"]
+position = Vector2(0, 105)
+scale = Vector2(8, 6.75)
+sprite_frames = SubResource("SpriteFrames_xy4l4")
+autoplay = "default"
+frame_progress = 0.472793

@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://dx0bwt3nbibrd"]
+
+[ext_resource type="Script" uid="uid://xaegca0iv1j4" path="res://scenes/enemies/enemy.gd" id="1_kd73q"]
+[ext_resource type="Shader" uid="uid://cmi4t8fjydo34" path="res://scenes/enemies/Blink.gdshader" id="2_nqq64"]
+[ext_resource type="Texture2D" uid="uid://cngcgn4gk4a18" path="res://assets/sprites/meteors/meteorBrown_big1.png" id="3_jxend"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rc3c3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_00p17"]
+resource_local_to_scene = true
+shader = ExtResource("2_nqq64")
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_intensity = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b0ar6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jxend")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_kd73q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(5.32502, 5.32502)
+shape = SubResource("CircleShape2D_rc3c3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_00p17")
+sprite_frames = SubResource("SpriteFrames_b0ar6")
+autoplay = "default"
+frame_progress = 0.155075
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+scale = Vector2(5.32502, 5.32502)
+shape = SubResource("CircleShape2D_rc3c3")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

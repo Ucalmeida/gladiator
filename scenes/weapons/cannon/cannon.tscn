@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyky04gih6cjy"]
+
+[ext_resource type="Script" uid="uid://dy84i6uu3kdtp" path="res://scenes/weapons/cannon/cannon.gd" id="1_wh18c"]
+
+[node name="Cannon" type="Node2D"]
+script = ExtResource("1_wh18c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(21, 0)
+
+[node name="shootSpeedTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="shootSpeedTimer" to="." method="_on_shoot_speed_timer_timeout"]

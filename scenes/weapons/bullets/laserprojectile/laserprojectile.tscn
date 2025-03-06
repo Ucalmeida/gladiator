@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvpuhqxrahqo2"]
+
+[ext_resource type="Script" uid="uid://um685yhmvhga" path="res://scenes/weapons/bullets/laserprojectile/laserprojectile.gd" id="1_d23i3"]
+[ext_resource type="Texture2D" uid="uid://cvx8pgcy2jxv8" path="res://assets/sprites/particles/laserRed14.png" id="1_y8hlx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4s8jg"]
+radius = 8.0
+height = 60.0
+
+[node name="Laserprojectile" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_d23i3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_y8hlx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4s8jg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

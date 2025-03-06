@@ -1,0 +1,143 @@
+[gd_scene load_steps=19 format=3 uid="uid://s2yqbyoi6yug"]
+
+[ext_resource type="Script" uid="uid://cucth6iamu7nf" path="res://scenes/weapons/bullets/fire/fire_bullet.gd" id="1_oyqpl"]
+[ext_resource type="Texture2D" uid="uid://ct2kt85hkwlom" path="res://assets/sprites/bullets/Flamethrower-Sheet.png" id="3_7rxv5"]
+[ext_resource type="PackedScene" uid="uid://bfgykr1tfun6m" path="res://common/hitbox/PlayerHitbox.tscn" id="3_cgq6w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bv1ax"]
+radius = 8.0
+height = 34.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_njw0m"]
+height = 38.0
+
+[sub_resource type="Curve" id="Curve_wga0b"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 4), 0.0, 0.0, 0, 0, Vector2(0.978979, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_7eqfd"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxn4y"]
+atlas = ExtResource("3_7rxv5")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk8em"]
+atlas = ExtResource("3_7rxv5")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdl86"]
+atlas = ExtResource("3_7rxv5")
+region = Rect2(192, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a8gm"]
+atlas = ExtResource("3_7rxv5")
+region = Rect2(0, 48, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iekl6"]
+atlas = ExtResource("3_7rxv5")
+region = Rect2(96, 48, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tk7y"]
+atlas = ExtResource("3_7rxv5")
+region = Rect2(192, 48, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mox8b"]
+atlas = ExtResource("3_7rxv5")
+region = Rect2(0, 96, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrb7a"]
+atlas = ExtResource("3_7rxv5")
+region = Rect2(96, 96, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxbqt"]
+atlas = ExtResource("3_7rxv5")
+region = Rect2(192, 96, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8scc"]
+atlas = ExtResource("3_7rxv5")
+region = Rect2(0, 144, 96, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v0v3g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxn4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk8em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdl86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a8gm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iekl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tk7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mox8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrb7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxbqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8scc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 18.0
+}]
+
+[node name="FireBullet" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_oyqpl")
+initial_speed = 1000.0
+target_speed = 1000.0
+lifespan = 1.8
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(18, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bv1ax")
+
+[node name="PlayerHitbox" parent="." instance=ExtResource("3_cgq6w")]
+damage = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+position = Vector2(16, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_njw0m")
+
+[node name="SpriteGroup" type="Node2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SpriteGroup"]
+amount = 100
+preprocess = 0.1
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_curve = SubResource("Curve_wga0b")
+color_ramp = SubResource("Gradient_7eqfd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteGroup"]
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_v0v3g")
+autoplay = "default"
+frame_progress = 0.753417

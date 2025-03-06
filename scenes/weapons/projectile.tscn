@@ -1,6 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://e702jc4ceq34"]
+[gd_scene load_steps=4 format=3 uid="uid://c0dnkjwqplsdi"]
 
-[ext_resource type="Script" path="res://scenes/weapons/projectile.gd" id="1_2h0pb"]
+[ext_resource type="Texture2D" uid="uid://cvx8pgcy2jxv8" path="res://assets/sprites/particles/laserRed14.png" id="2_jl2hu"]
 
-[node name="Projectile" type="Node2D"]
-script = ExtResource("1_2h0pb")
+[sub_resource type="GDScript" id="GDScript_1lcsq"]
+script/source = "extends Area2D
+
+var damage: float = 10.0
+var speed: float = 800.0
+var owner_id: int = 0  # ID do jogador que disparou o projétil
+var velocity: Vector2 = Vector2.ZERO
+
+func initialize(shooter_id: int, direction: Vector2):
+	owner_id = shooter_id
+	rotation = direction.angle()
+	velocity = direction * speed
+
+func _physics_process(delta: float) -> void:
+	position += transform.x * speed * delta
+
+func _on_body_entered(body: Node) -> void:
+	if body.has_method(\"take_damage\") and body.player_id != owner_id:
+		body.take_damage(damage, owner_id)
+		queue_free()
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1h0wk"]
+radius = 7.0
+height = 53.7038
+
+[node name="Projectile" type="Area2D"]
+script = SubResource("GDScript_1lcsq")
+
+[node name="LaserRed" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_jl2hu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(1, 1.08)
+shape = SubResource("CapsuleShape2D_1h0wk")

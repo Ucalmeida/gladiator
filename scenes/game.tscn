@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7fpbgf536ukx"]
+[gd_scene load_steps=4 format=3 uid="uid://b7fpbgf536ukx"]
 
-[ext_resource type="PackedScene" uid="uid://6ptf6s6or8jj" path="res://scenes/Background/space_background.tscn" id="1_tcnn7"]
+[ext_resource type="PackedScene" uid="uid://6ptf6s6or8jj" path="res://scenes/background/space_background.tscn" id="1_tcnn7"]
 [ext_resource type="PackedScene" uid="uid://b0a53tcb2ordi" path="res://scenes/player/player_ship.tscn" id="2_n0wsc"]
+[ext_resource type="PackedScene" uid="uid://dx0bwt3nbibrd" path="res://scenes/enemies/meteors/enemy.tscn" id="3_6f1jo"]
 
 [node name="Game" type="Node2D"]
 
@@ -9,3 +10,6 @@
 position = Vector2(574, 323)
 
 [node name="SpaceBackground" parent="." instance=ExtResource("1_tcnn7")]
+
+[node name="Enemy" parent="." instance=ExtResource("3_6f1jo")]
+position = Vector2(579, 44)

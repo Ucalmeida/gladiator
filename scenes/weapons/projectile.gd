@@ -1,19 +1,24 @@
-extends Area2D
+extends CharacterBody2D
+var pos: Vector2
+var rota: float
+var dir : float = 0.0
+var speed = 4000
+var z_dex : int
 
-var damage: float = 10.0
-var speed: float = 800.0
-var owner_id: int = 0  # ID do jogador que disparou o projétil
-var velocity: Vector2 = Vector2.ZERO
+func _ready():
+	global_position = pos
+	global_rotation = rota
+	z_index = z_dex
 
-func initialize(shooter_id: int, direction: Vector2):
-	owner_id = shooter_id
-	rotation = direction.angle()
-	velocity = direction * speed
+func _physics_process(_delta):
+	velocity = Vector2(speed, 0).rotated(dir)
+	move_and_slide()
 
-func _physics_process(delta: float) -> void:
-	position += transform.x * speed * delta
 
-func _on_body_entered(body: Node) -> void:
-	if body.has_method("take_damage") and body.player_id != owner_id:
-		body.take_damage(damage, owner_id)
-		queue_free()
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	print("HIT!!")
+	queue_free()
+
+
+func _on_life_timeout() -> void:
+	queue_free()

@@ -6,6 +6,8 @@
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
 [node name="Nebula" type="ParallaxLayer" parent="."]
+position = Vector2(-617, -214)
+scale = Vector2(3.65, 3.65)
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(1024, 1024)
 
@@ -15,6 +17,8 @@ scale = Vector2(1.316, 1)
 texture = ExtResource("1_cf27b")
 
 [node name="Stars" type="ParallaxLayer" parent="."]
+position = Vector2(-1053, -238)
+scale = Vector2(4.818, 4)
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(1024, 1024)
 
