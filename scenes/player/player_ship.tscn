@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0a53tcb2ordi"]
+[gd_scene load_steps=10 format=3 uid="uid://b0a53tcb2ordi"]
 
 [ext_resource type="Texture2D" uid="uid://dvr5lt65kbxfy" path="res://assets/sprites/star_ships/playerShip1_orange.png" id="1_d7hk6"]
 [ext_resource type="Script" uid="uid://cj0qt38llg2in" path="res://scenes/player/player_ship.gd" id="1_t6xx3"]
@@ -7,6 +7,18 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g542q"]
 height = 30.6396
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykp3x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1a8k"]
+bg_color = Color(0, 0.692808, 0.726289, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjavq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usbmo"]
+bg_color = Color(0.758215, 0, 0.0899801, 1)
 
 [node name="PlayerShip" type="CharacterBody2D"]
 script = ExtResource("1_t6xx3")
@@ -36,15 +48,23 @@ rotation = 1.5708
 scale = Vector2(1.125, 0.949219)
 
 [node name="ShieldBar" type="ProgressBar" parent="."]
-offset_left = -0.287102
-offset_top = 69.0
-offset_right = 3.7129
-offset_bottom = 96.0
+offset_left = -72.0
+offset_top = -74.0
+offset_right = 78.0
+offset_bottom = -64.0
 rotation = 1.5708
+theme_override_styles/background = SubResource("StyleBoxFlat_ykp3x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_s1a8k")
+value = 100.0
+show_percentage = false
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -0.287102
-offset_top = -68.0
-offset_right = 3.7129
-offset_bottom = -41.0
+offset_left = -87.0
+offset_top = -75.0
+offset_right = 63.0
+offset_bottom = -65.0
 rotation = 1.5708
+theme_override_styles/background = SubResource("StyleBoxFlat_kjavq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_usbmo")
+value = 100.0
+show_percentage = false

@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://dksuwhj4d7nhb"]
+
+[ext_resource type="Texture2D" uid="uid://cyamhaav5t66a" path="res://assets/sprites/effects/fuselagem_integrity.png" id="1_gmvp4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvk1p"]
+atlas = ExtResource("1_gmvp4")
+region = Rect2(0, 0, 74, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd1rd"]
+atlas = ExtResource("1_gmvp4")
+region = Rect2(74, 0, 74, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcgqh"]
+atlas = ExtResource("1_gmvp4")
+region = Rect2(148, 0, 74, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcw80"]
+atlas = ExtResource("1_gmvp4")
+region = Rect2(222, 0, 74, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iv8y"]
+atlas = ExtResource("1_gmvp4")
+region = Rect2(296, 0, 74, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35jv1"]
+atlas = ExtResource("1_gmvp4")
+region = Rect2(370, 0, 74, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bgm18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvk1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd1rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcgqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcw80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iv8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35jv1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="FuselagemIntegrity" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bgm18")
+autoplay = "default"

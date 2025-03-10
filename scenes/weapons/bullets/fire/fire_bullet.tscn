@@ -13,7 +13,7 @@ height = 38.0
 
 [sub_resource type="Curve" id="Curve_wga0b"]
 _limits = [0.0, 4.0, 0.0, 1.0]
-_data = [Vector2(0, 4), 0.0, 0.0, 0, 0, Vector2(0.978979, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 4), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_7eqfd"]
@@ -140,4 +140,4 @@ color_ramp = SubResource("Gradient_7eqfd")
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_v0v3g")
 autoplay = "default"
-frame_progress = 0.753417
+frame_progress = 0.797844
